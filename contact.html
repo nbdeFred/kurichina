@@ -1,10 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="喾日咨询 - 联系我们，专业猎头服务咨询，地址、电话、邮箱、在线表单。">
   <title>联系我们 | 喾日咨询</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -79,10 +80,8 @@
           </div>
         </div>
 
-        <!-- Map Placeholder -->
-        <div class="map-placeholder">
-          <p>地图加载区域（部署时替换为实际地图组件）</p>
-        </div>
+        <!-- Map -->
+        <div class="map-container" id="contact-map"></div>
       </div>
 
     </div>
@@ -124,5 +123,25 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>
+  (function() {
+    var map = L.map('contact-map', {
+      center: [31.233679, 121.506026],
+      zoom: 16,
+      zoomControl: true,
+      attributionControl: false,
+      scrollWheelZoom: false
+    });
+    L.tileLayer('https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}', {
+      subdomains: ['1','2','3','4'],
+      attribution: '&copy; 高德地图 | <a href="https://map.baidu.com/search/%E4%B8%8A%E6%B5%B7%E7%8E%AF%E7%90%83%E9%87%91%E8%9E%8D%E4%B8%AD%E5%BF%83" target="_blank">百度地图查看</a>',
+      maxZoom: 19
+    }).addTo(map);
+    var marker = L.marker([31.233679, 121.506026]).addTo(map)
+      .bindPopup('<strong>Kuri China | 喾日咨询</strong><br>上海市浦东新区世纪大道100号<br>上海环球金融中心28楼')
+      .openPopup();
+  })();
+</script>
 </body>
 </html>
