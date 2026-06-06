@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="3;url=https://www.kurichina.com">
+    <title>页面未找到 - 喾日咨询</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+            display: flex; justify-content: center; align-items: center;
+            min-height: 100vh; background: #f5f7fa; color: #333;
+        }
+        .container { text-align: center; padding: 40px; }
+        h1 { font-size: 72px; color: #1a73e8; margin-bottom: 16px; }
+        h2 { font-size: 24px; font-weight: 400; color: #666; margin-bottom: 32px; }
+        p { font-size: 16px; color: #888; margin-bottom: 24px; }
+        a { color: #1a73e8; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .countdown { color: #1a73e8; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>404</h1>
+        <h2>页面未找到</h2>
+        <p>您访问的页面不存在或已被移除。</p>
+        <p>将在 <span class="countdown" id="timer">3</span> 秒后自动跳转至首页。</p>
+        <p>如果没有自动跳转，请点击 <a href="https://www.kurichina.com">这里</a>。</p>
+    </div>
+    <script>
+        var seconds = 3;
+        var timer = document.getElementById('timer');
+        setInterval(function() {
+            seconds--;
+            if (seconds >= 0) { timer.textContent = seconds; }
+        }, 1000);
+    </script>
+</body>
+</html>
